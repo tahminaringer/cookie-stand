@@ -1,160 +1,52 @@
 'use strict'
 
 var storeInfo = document.getElementById('storeSales');
-
-
-function getRandomInt (min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-    //caluculates random amount of cookies per hour
-}
-
-
-
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
+var myTable = document.getElementById("myTable");
 
-//forloop- loop through hours array-
-//inside for loop declar total cookies per hour var, use random number function to calculate total, look how to round a number, random number * customers per hour. up count to include each hour. Line 18 add peramiter to add this.notation
-// }
+function Store (city, minCust, maxCust, aveCookieSale, cookiesEachHour) {
+    this.city = city;
+    this.minCust = minCust;
+    this.maxCust = maxCust;
+    this.aveCookieSale = aveCookieSale;
+    this.cookiesEachHour = cookiesEachHour;
+    this.totalCookies = function() {
+        return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
+    } 
+}
 
-var seattle = {
-    minCust: 23,
-    maxCust: 65,
-    aveCookieSale: 6.3, 
-    cookiesEachHour: [],
+Store.prototype.render = function() {
+    var trElement = document.createElement('tr');
+    var tdElement = document.createElement('td');
+    tdElement.textContent = (this.city);
+    trElement.appendChild(tdElement);
     
-    render: function() {
-        var city = document.createElement('ul'); 
-        city.textContent = ('Seattle'); 
-        storeInfo.appendChild(city);
+    var totalCookiesPerDay = 0;
+    for (var i = 0; i < hours.length; i++){
         
-        var totalCookiesPerDay = 0;
-        for (var i = 0; i < hours.length; i++) {
-            var list = document.createElement('li');
-            var cookiesThisHour = Math.round(getRandomInt(this.minCust, this.maxCust)* this.aveCookieSale);
-            list.textContent = hours[i] + ': ' + cookiesThisHour;
-            totalCookiesPerDay += cookiesThisHour;
-            city.appendChild(list);
-        } 
-
-        var total = document.createElement('li')
-        total.textContent = 'total: ' + totalCookiesPerDay;
-        city.append(total);
-    } 
+        var table = document.createElement('td');
+        var cookiesThisHour = Math.round(this.totalCookies(this.minCust, this.maxCust)* this.aveCookieSale);
+        table.textContent = hours[i] + ': ' + cookiesThisHour;
+        trElement.appendChild(table)
+        myTable.appendChild(trElement);
+        totalCookiesPerDay += cookiesThisHour;
+        
+    }
+    var total = document.createElement('td');
+    total.textContent = 'total: ' + totalCookiesPerDay;
+    console.log(myTable)
+    trElement.appendChild(total);
 }
 
-seattle.render();
 
-var Tokyo = {
-    minCust: 3,
-    maxCust: 24,
-    aveCookieSale: 1.2,
-    cookiesEachHour: [],
+var Seattle = new Store('Seattle', 23, 65, 6.3, []);
+var Tokyo = new Store('Tokyo', 3, 24, 1.2, []);
+var Dubai = new Store('Dubai', 11, 38, 3.7, []);
+var Paris = new Store('Paris', 20, 38, 2.3, []);
+var Lima = new Store('Lima', 2, 16, 4.6, [])
 
-    render: function() {
-        var city = document.createElement('ul'); 
-        city.textContent = ('Tokyo'); 
-        storeInfo.appendChild(city);
-        
-        var totalCookiesPerDay = 0;
-        for (var i = 0; i < hours.length; i++) {
-            var list = document.createElement('li');
-            var cookiesThisHour = Math.round(getRandomInt(this.minCust, this.maxCust)* this.aveCookieSale);
-            list.textContent = hours[i] + ': ' + cookiesThisHour;
-            totalCookiesPerDay += cookiesThisHour;
-            city.appendChild(list);
-        } 
-
-        var total = document.createElement('li')
-        total.textContent = 'total: ' + totalCookiesPerDay;
-        city.append(total);
-    } 
-}
-
+Seattle.render();
 Tokyo.render();
-
-var Dubai = {
-    minCust: 11,
-    maxCust: 38,
-    aveCookieSale: 3.7,
-    cookiesEachHour: [],
-
-    render: function() {
-        var city = document.createElement('ul'); 
-        city.textContent = ('Dubai'); 
-        storeInfo.appendChild(city);
-        
-        var totalCookiesPerDay = 0;
-        for (var i = 0; i < hours.length; i++) {
-            var list = document.createElement('li');
-            var cookiesThisHour = Math.round(getRandomInt(this.minCust, this.maxCust)* this.aveCookieSale);
-            list.textContent = hours[i] + ': ' + cookiesThisHour;
-            totalCookiesPerDay += cookiesThisHour;
-            city.appendChild(list);
-        } 
-
-        var total = document.createElement('li')
-        total.textContent = 'total: ' + totalCookiesPerDay;
-        city.append(total);
-    } 
-}
-
 Dubai.render();
-
-var Paris = {
-    minCust: 20,
-    maxCust: 38,
-    aveCookieSale: 2.3,
-    cookiesEachHour: [],
-
-    render: function() {
-        var city = document.createElement('li'); 
-        city.textContent = ('Paris'); 
-        storeInfo.appendChild(city);
-        
-        var totalCookiesPerDay = 0;
-        for (var i = 0; i < hours.length; i++) {
-            var list = document.createElement('li');
-            var cookiesThisHour = Math.round(getRandomInt(this.minCust, this.maxCust)* this.aveCookieSale);
-            list.textContent = hours[i] + ': ' + cookiesThisHour;
-            totalCookiesPerDay += cookiesThisHour;
-            city.appendChild(list);
-        } 
-
-        var total = document.createElement('li')
-        total.textContent = 'total: ' + totalCookiesPerDay;
-        city.append(total);
-    } 
-}
-
 Paris.render();
-
-var Lima = {
-    minCust: 2,
-    maxCust: 16,
-    aveCookieSale: 4.6,
-    cookiesEachHour: [],
-    
-    render: function() {
-        var city = document.createElement('li'); 
-        city.textContent = ('Lima'); 
-        storeInfo.appendChild(city);
-        
-        var totalCookiesPerDay = 0;
-        for (var i = 0; i < hours.length; i++) {
-            var list = document.createElement('li');
-            var cookiesThisHour = Math.round(getRandomInt(this.minCust, this.maxCust)* this.aveCookieSale);
-            list.textContent = hours[i] + ': ' + cookiesThisHour;
-            totalCookiesPerDay += cookiesThisHour;
-            city.appendChild(list);
-        } 
-
-        var total = document.createElement('li')
-        total.textContent = 'total: ' + totalCookiesPerDay;
-        city.append(total);
-    } 
-}
 Lima.render();
-
- 
