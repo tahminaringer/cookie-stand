@@ -1,9 +1,50 @@
 'use strict'
-
+var stores = null;
 var storeInfo = document.getElementById('storeSales');
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
 var myTable = document.getElementById("myTable");
 
+function createTableHeader() {
+    var trElement = document.createElement('tr');
+    myTable.appendChild(trElement);
+    var thElement = document.createElement('th');
+    thElement.textContent = "Store location";
+    trElement.appendChild(thElement);
+
+    for (var i =0; i < hours.length; i++) {
+        thElement = document.createElement('th');
+        thElement.textContent = hours[i];
+        trElement.appendChild(thElement);
+    }
+    thElement = document.createElement('th');
+    thElement.textContent = 'Total';
+    trElement.appendChild(thElement);
+}
+createTableHeader();
+
+function createTableFooter() {
+    var trElement = document.createElement('tr');
+    myTable.appendChild(trElement);
+    var thElement = document.createElement('th');
+    trElement.appendChild(thElement);
+    thElement.textContent = ('Totals');
+
+    var grandTotal = 0;
+    for (var i = 0; i < hours.length; i++) {
+        var hourlySum = 0;
+        var tdElement = document.createElement ('td');
+        trElement.appendChild(tdElement);
+
+        for (var j = 0; j < stores.length; j++) {
+            hourlySum += stores[j].cookiesEachHour[i];
+            grandTotal += stores[j].cookiesEachHour[i];
+        }
+        tdElement.textContent = hourlySum;
+    }
+    tdElement = document.createElement('td');
+    trElement.appendChild(tdElement);
+    tdElement.textContent = grandTotal;
+}
 function Store (city, minCust, maxCust, aveCookieSale, cookiesEachHour) {
     this.city = city;
     this.minCust = minCust;
@@ -26,14 +67,15 @@ Store.prototype.render = function() {
         
         var table = document.createElement('td');
         var cookiesThisHour = Math.round(this.totalCookies(this.minCust, this.maxCust)* this.aveCookieSale);
-        table.textContent = hours[i] + ': ' + cookiesThisHour;
+        table.textContent = cookiesThisHour;
         trElement.appendChild(table)
         myTable.appendChild(trElement);
         totalCookiesPerDay += cookiesThisHour;
+        this.cookiesEachHour.push(cookiesThisHour);
         
     }
     var total = document.createElement('td');
-    total.textContent = 'total: ' + totalCookiesPerDay;
+    total.textContent = totalCookiesPerDay;
     console.log(myTable)
     trElement.appendChild(total);
 }
@@ -50,3 +92,6 @@ Tokyo.render();
 Dubai.render();
 Paris.render();
 Lima.render();
+stores = [Seattle, Tokyo, Dubai, Paris, Lima]
+
+createTableFooter();
