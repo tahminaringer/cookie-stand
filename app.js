@@ -1,5 +1,5 @@
 'use strict'
-var stores = null;
+var stores = [];
 var storeInfo = document.getElementById('storeSales');
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
 var myTable = document.getElementById("myTable");
@@ -95,3 +95,33 @@ Lima.render();
 stores = [Seattle, Tokyo, Dubai, Paris, Lima]
 
 createTableFooter();
+
+function logger(event) {
+    console.log('Input changed', event.target.name, event.target.value);
+}
+
+function createNewStore(event) {
+    event.preventDefault();
+    var city = event.target.city.value;
+    var min = parseInt(event.target.min.value);
+    var max = parseInt(event.target.max.value);
+    var average = parseFloat(event.target.average.value);
+    var newStore = new Store(city, min, max, average, []);
+    stores.push(newStore);
+    console.log(city, min, max, average);
+ 
+ refreshTable();   
+}
+var formElement = document.getElementById('new-store-form');
+formElement.addEventListener('submit', createNewStore);
+
+function refreshTable() {
+    var table = document.getElementById("myTable");
+    table.innerHTML = "";
+    createTableHeader();
+    
+    for (var j = 0; j < stores.length; j++) {
+        stores[j].render();
+    }
+    createTableFooter();
+}
