@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    Height: 150px;
+    Background-color: rgb(35, 46, 37);
+    color: rgb(215, 160, 102);
+    margin-top: 0;
+    padding-top: 0;
+}
+
+header h1 {
+    height: 100%;
+    line-height: 150px;
+    font-size: 60px;
+    margin-left: 400px;
+}
+
+header img {
+    height: 100px;
+    padding-top: 25px;
+    float: left;
+    margin-left: 25px;
+}
+
+body {
+    background:rgb(235, 172, 95);
+}
+aside {
+    border:solid;
+    float: left;
+    height: 100%;
+    width: 150px;
+    background: rgb(164, 55, 16)
+}
+
+aside img {
+    height: 150px;
+    margin-left: 0;
+  
+}
