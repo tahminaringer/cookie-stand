@@ -63,7 +63,7 @@ Store.prototype.render = function() {
     trElement.appendChild(tdElement);
     
     var totalCookiesPerDay = 0;
-    for (var i = 0; i < hours.length; i++){
+    for (var i = 0; i < hours.length; i++) {
         
         var table = document.createElement('td');
         var cookiesThisHour = Math.round(this.totalCookies(this.minCust, this.maxCust)* this.aveCookieSale);

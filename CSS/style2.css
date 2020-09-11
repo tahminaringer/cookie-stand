@@ -1,0 +1,29 @@
+header {
+    background-color: rgb(84, 74, 62);
+    color: rgb(213, 196, 174);
+    height: 75px; 
+    width: 900px;
+    font-size: 35px;
+    padding-left: 180px;
+    padding-top: 50px;
+    border: solid;
+    border-width: 10px;
+}
+
+body{
+    background: rgb(250, 241, 230);
+}
+table {
+border: solid;
+}
+
+form fieldset {
+border: double;
+background: rgb(213, 196, 174);
+height: 100px;
+}
+
+legend {
+    font-size: 25px;
+}
+
