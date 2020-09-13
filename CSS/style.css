@@ -6,8 +6,8 @@
 
 header {
     width: 1000;
-    Height: 230px;
-    background-color: black;
+    Height: 223px;
+    background-color:rgb(60, 147, 141);
     margin-top: 0;
     padding-top: 0;
 
@@ -62,8 +62,8 @@ aside {
 }
 
 aside img {
-    width: 118px;
-    margin-left: 3;
+    width: 115px;
+    margin-left: ;
     margin-top: 0px;
     float: right;
     border: solid;
@@ -78,14 +78,14 @@ nav li {
     margin-left: 0px;
     padding-left: 0px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 0px;
     padding-top: 90px;
     color:rgb(0, 0, 0)
 }
 
 ul button {
     text-align: center;
-    Margin-top: 50px;
+    Margin-top: 20gipx;
     background-color:rgb(235, 172, 95);
     padding: 2px 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -138,7 +138,8 @@ footer {
     background: black;
     background: rgb(131, 208, 203);
     border: double 10px black;
-    border-radius: 15%;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
 }
 
 footer img {

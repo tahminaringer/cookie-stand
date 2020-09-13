@@ -16,8 +16,27 @@ header {
     border-width: 10px;
     border-radius: 10%;
     font-family: 'Kaushan Script', cursive;
-
 }
+
+img {
+    position: relative;
+    width: 200px;
+    margin-left: 380px;
+    margin-top: 75px;
+}
+
+table#myTable {
+    margin-top: 5px;
+}
+
+h2 {
+    position: absolute;
+    font-family: 'Kaushan Script', cursive;
+    margin-left: 450px;
+    top: 217px;
+    color:rgb(254, 233, 208);
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
