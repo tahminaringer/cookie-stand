@@ -39,7 +39,7 @@ header h1 {
     line-height: 150px;
     font-size: 60px;
     font-family: 'Kuashan Script', cursive;
-    margin-left: 400px;
+    margin-left: 425px;
     margin-top: 0;
     padding-top: 0;
     width: 500px;
@@ -85,7 +85,7 @@ nav li {
 
 ul button {
     text-align: center;
-    Margin-top: 20gipx;
+    Margin-top: 20px;
     background-color:rgb(235, 172, 95);
     padding: 2px 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -122,7 +122,7 @@ p {
 
 section img {
     float: left;
-    border: solid 1px;
+    border: solid 3px;
     margin-left: 32px;
     margin-right: 25px;
     margin-bottom: 10px;
@@ -174,4 +174,9 @@ ul h4 {
 
 footer #background {
     background-color: black;
+}
+
+button:hover {
+    background-color: black;
+    color: whitesmoke;
 }
